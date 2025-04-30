@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JepeBeasar - Informasi Terkini & Berita Terpercaya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --gray: #95a5a6;
+            --highlight: #f1c40f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aX8.woff2) format('woff2');
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        
+        .logo-icon .circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .logo-icon .circle::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            border: 2px dashed var(--accent);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logo-text h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+        
+        .logo-text span {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: block;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+            font-size: 0.95rem;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80') no-repeat center center/cover;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 60px;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .hero-content {
+            color: white;
+            max-width: 700px;
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            background-color: var(--highlight);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            font-weight: 800;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Breaking News */
+        .breaking-news {
+            background-color: var(--dark);
+            color: white;
+            padding: 15px 0;
+            margin-bottom: 50px;
+        }
+        
+        .breaking-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breaking-label {
+            background-color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            margin-right: 25px;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .news-ticker {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 30s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 30px 0 70px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            position: relative;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 800;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .view-all {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .view-all:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 70px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-img img {
+            transform: scale(1.1);
+        }
+        
+        .news-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .news-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-date {
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: auto;
+        }
+        
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .news-author img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Featured Section */
+        .featured-section {
+            margin-bottom: 70px;
+        }
+        
+        .featured-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .main-featured {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 500px;
+            grid-row: span 2;
+        }
+        
+        .main-featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+        
+        .featured-tag {
+            background-color: var(--highlight);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .featured-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            font-weight: 800;
+        }
+        
+        .featured-excerpt {
+            margin-bottom: 25px;
+            opacity: 0.9;
+            max-width: 80%;
+        }
+        
+        .side-featured {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .side-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            transition: all 0.4s ease;
+        }
+        
+        .side-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .side-card .news-img {
+            width: 40%;
+            height: auto;
+        }
+        
+        .side-card .news-content {
+            width: 60%;
+            padding: 20px;
+        }
+        
+        /* Categories */
+        .categories {
+            margin-bottom: 70px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover .category-icon {
+            background-color: var(--accent);
+            color: white;
+            transform: rotate(15deg);
+        }
+        
+        .category-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .category-count {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--primary);
+            padding: 70px 0;
+            text-align: center;
+            margin-bottom: 70px;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            color: white;
+            font-weight: 800;
+        }
+        
+        .newsletter p {
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 550px;
+            margin: 0 auto;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 18px 25px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            padding: 0 35px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Video Section */
+        .video-section {
+            margin-bottom: 70px;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover .play-button {
+            background-color: var(--secondary);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-content {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .video-meta {
+            color: var(--gray);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .featured-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-featured {
+                height: 450px;
+                grid-row: auto;
+            }
+            
+            .side-featured {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            
+            .side-card {
+                flex-direction: column;
+            }
+            
+            .side-card .news-img,
+            .side-card .news-content {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                height: 500px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .breaking-label {
+                margin-right: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 450px;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                border-radius: 5px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 5px;
+                width: 100%;
+            }
+            
+            .newsletter-form button {
+                padding: 18px;
+            }
+            
+            .side-featured {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .featured-title {
+                font-size: 1.8rem;
+            }
+            
+            .featured-overlay {
+                padding: 25px;
+            }
+            
+            footer {
+                clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="circle">JB</div>
+                </div>
+                <div class="logo-text">
+                    <h1>JepeBeasar</h1>
+                    <span>Informasi Terkini & Berita Terpercaya</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Politik</a></li>
+                    <li><a href="#">Ekonomi</a></li>
+                    <li><a href="#">Teknologi</a></li>
+                    <li><a href="#">Kesehatan</a></li>
+                    <li><a href="#">Olahraga</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tag">BERITA UTAMA</span>
+                <h2>Dapatkan Informasi Terkini yang Terjamin Keakuratannya</h2>
+                <p>JepeBeasar menyajikan berita-berita terkini dengan verifikasi fakta ketat dan analisis mendalam dari para ahli di bidangnya.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn">Baca Berita Terkini</a>
+                    <a href="#" class="btn btn-outline">Tentang Kami</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Breaking News -->
+    <section class="breaking-news">
+        <div class="container breaking-container">
+            <div class="breaking-label">
+                <i class="fas fa-bolt"></i> BERITA TERKINI
+            </div>
+            <div class="news-ticker">
+                <div class="ticker-content">
+                    • Presiden umumkan paket bantuan sosial tambahan untuk 20 juta keluarga • Harga BBM turun mulai besok pagi • Timnas Indonesia lolos ke Piala Asia setelah kalahkan Vietnam 2-1 • Gempa 6.1 SR mengguncang Jawa Barat, tidak ada korban jiwa • KPK tetapkan tersangka baru kasus korupsi proyek infrastruktur •
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Featured Section -->
+            <section class="featured-section">
+                <div class="section-header">
+                    <h2 class="section-title">Sorotan Utama</h2>
+                    <a href="#" class="view-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="featured-container">
+                    <div class="main-featured">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Featured News">
+                        <div class="featured-overlay">
+                            <span class="featured-tag">EKONOMI</span>
+                            <h3 class="featured-title">BI Pertahankan Suku Bunga Acuan di Level 5,75% di Tengah Tekanan Inflasi Global</h3>
+                            <p class="featured-excerpt">Gubernur Bank Indonesia menyatakan keputusan ini diambil untuk menjaga stabilitas nilai tukar rupiah sekaligus mendorong pertumbuhan ekonomi.</p>
+                            <a href="#" class="btn">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    <div class="side-featured">
+                        <div class="side-card">
+                            <div class="news-img">
+                                <img src="https://images.unsplash.com/photo-1581092921461-39b2f2aa99f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 1">
+                                <span class="news-tag">TEKNOLOGI</span>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date">
+                                    <i class="far fa-clock"></i> 2 jam yang lalu
+                                </div>
+                                <h3 class="news-title">Startup Lokal Rilis Platform AI untuk Deteksi Penyakit Tanaman</h3>
+                                <div class="news-meta">
+                                    <span class="news-author">
+                                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Author"> Rina Wijaya
+                                    </span>
+                                    <span><i class="far fa-eye"></i> 5.2k</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-card">
+                            <div class="news-img">
+                                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 2">
+                                <span class="news-tag">OLAHRAGA</span>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date">
+                                    <i class="far fa-clock"></i> 4 jam yang lalu
+                                </div>
+                                <h3 class="news-title">Timnas U-23 Kalahkan Thailand 3-1 di Semifinal SEA Games</h3>
+                                <div class="news-meta">
+                                    <span class="news-author">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author"> Budi Santoso
+                                    </span>
+                                    <span><i class="far fa-eye"></i> 9.7k</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- News Grid -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">Berita Terbaru</h2>
+                    <a href="#" class="view-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 1">
+                            <span class="news-tag">POLITIK</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-clock"></i> 1 jam yang lalu
+                            </div>
+                            <h3 class="news-title">DPR Sahkan RUU Perlindungan Data Pribadi Setelah 3 Tahun Pembahasan</h3>
+                            <p class="news-excerpt">RUU ini akan menjadi payung hukum pertama di Indonesia yang khusus mengatur perlindungan data pribadi warga negara.</p>
+                            <div class="news-meta">
+                                <span class="news-author">
+                                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Author"> Andi Wijaya
+                                </span>
+                                <span><i class="far fa-eye"></i> 7.3k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="News 2">
+                            <span class="news-tag">KESEHATAN</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-clock"></i> 3 jam yang lalu
+                            </div>
+                            <h3 class="news-title">Peneliti UI Temukan Senyawa Baru Potensial untuk Obat Kanker Payudara</h3>
+                            <p class="news-excerpt">Senyawa yang diisolasi dari tanaman lokal ini menunjukkan efektivitas 85% dalam uji laboratorium terhadap sel kanker.</p>
+                            <div class="news-meta">
+                                <span class="news-author">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Author"> Dr. Maya Sari
+                                </span>
+                                <span><i class="far fa-eye"></i> 4.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="News 3">
+                            <span class="news-tag">BISNIS</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-clock"></i> 5 jam yang lalu
+                            </div>
+                            <h3 class="news-title">GoTo Catat Pertumbuhan Pendapatan 28% di Kuartal Pertama 2023</h3>
+                            <p class="news-excerpt">Perusahaan teknologi terbesar di Indonesia ini menunjukkan kinerja positif di tengah tantangan ekonomi global.</p>
+                            <div class="news-meta">
+                                <span class="news-author">
+                                    <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Author"> Rizal Fauzi
+                                </span>
+                                <span><i class="far fa-eye"></i> 6.1k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Categories -->
+            <section class="categories">
+                <div class="section-header">
+                    <h2 class="section-title">Kategori Berita</h2>
+                    <a href="#" class="view-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3 class="category-title">Politik</h3>
+                        <p class="category-count">312 Artikel</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="category-title">Ekonomi</h3>
+                        <p class="category-count">245 Artikel</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="category-title">Teknologi</h3>
+                        <p class="category-count">189 Artikel</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-medkit"></i>
+                        </div>
+                        <h3 class="category-title">Kesehatan</h3>
+                        <p class="category-count">156 Artikel</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="category-title">Olahraga</h3>
+                        <p class="category-count">203 Artikel</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3 class="category-title">Hiburan</h3>
+                        <p class="category-count">127 Artikel</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Newsletter -->
+            <section class="newsletter">
+                <div class="newsletter-container">
+                    <h2>Berlangganan Newsletter JepeBeasar</h2>
+                    <p>Dapatkan ringkasan berita terpenting setiap pagi langsung ke inbox Anda. Gratis dan bebas spam.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Masukkan alamat email Anda" required>
+                        <button type="submit">Berlangganan Sekarang</button>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- Video Section -->
+            <section class="video-section">
+                <div class="section-header">
+                    <h2 class="section-title">Video Terkini</h2>
+                    <a href="#" class="view-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Video 1">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Wawancara Eksklusif dengan Menkeu Sri Mulyani</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-clock"></i> 15:32</span>
+                                <span><i class="far fa-eye"></i> 124k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Video 2">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Demo Karyawan Startup di Jakarta</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-clock"></i> 08:45</span>
+                                <span><i class="far fa-eye"></i> 89k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Video 3">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Review Mobil Listrik Terbaru di Indonesia</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-clock"></i> 12:18</span>
+                                <span><i class="far fa-eye"></i> 156k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tentang JepeBeasar</h3>
+                    <div class="footer-about">
+                        <p>JepeBeasar adalah portal berita online yang berkomitmen menyajikan informasi akurat, cepat, dan terpercaya dengan standar jurnalistik tinggi.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Navigasi Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Redaksi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pedoman Pemberitaan</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kategori Populer</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Politik</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ekonomi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Teknologi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kesehatan</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Olahraga</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Sudirman Kav. 52-53, Jakarta Selatan</p>
+                        <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+                        <p><i class="fas fa-envelope"></i> redaksi@jepebeasar.com</p>
+                        <p><i class="fas fa-clock"></i> Senin-Jumat: 08:00 - 17:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 JepeBeasar - All Rights Reserved. Dibangun dengan <i class="fas fa-heart"></i> di Jakarta</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Adjust ticker animation based on content width
+        function setupTicker() {
+            const tickerContent = document.querySelector('.ticker-content');
+            const contentWidth = tickerContent.scrollWidth;
+            const containerWidth = document.querySelector('.news-ticker').offsetWidth;
+            
+            if (contentWidth > containerWidth) {
+                const duration = Math.max(30, contentWidth / 40);
+                tickerContent.style.animationDuration = `${duration}s`;
+            } else {
+                tickerContent.style.animation = 'none';
+            }
+        }
+        
+        // Initialize
+        window.addEventListener('load', function() {
+            setupTicker();
+            
+            // Add animation delay to news cards for staggered effect
+            const newsCards = document.querySelectorAll('.news-card');
+            newsCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+            
+            // Add animation to category icons
+            const categoryIcons = document.querySelectorAll('.category-icon');
+            categoryIcons.forEach((icon, index) => {
+                icon.style.transitionDelay = `${index * 0.05}s`;
+            });
+        });
+        
+        window.addEventListener('resize', setupTicker);
+    </script>
+</body>
+</html>
